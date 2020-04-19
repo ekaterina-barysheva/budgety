@@ -361,12 +361,15 @@ var controller = (function(budgetCtrl, UICtrl) {
 
     document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
 
-    document.addEventListener('keypress', function(event) {
-      if (event.keyCode === 13 || event.which === 13) {
-        ctrlAddItem();
-      }
+    var selectors = [UICtrl.getDOMstrings().inputDescription, UICtrl.getDOMstrings().inputValue];
+    selectors.forEach(function(element) {
+      document.querySelector(element).addEventListener('keypress', function(event) {
+        if (event.keyCode === 13 || event.which === 13) {
+          ctrlAddItem();
+        }
+      });
     });
-    
+
     document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
 
     document.querySelector(DOM.inputType).addEventListener('change', UICtrl.changedType);
