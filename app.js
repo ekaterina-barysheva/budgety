@@ -361,9 +361,9 @@ var controller = (function(budgetCtrl, UICtrl) {
 
     document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
 
-    var selectors = [UICtrl.getDOMstrings().inputDescription, UICtrl.getDOMstrings().inputValue];
-    selectors.forEach(function(element) {
-      document.querySelector(element).addEventListener('keypress', function(event) {
+    var selectors = [DOM.inputDescription, DOM.inputValue];
+    selectors.forEach(function(selector) {
+      document.querySelector(selector).addEventListener('keypress', function(event) {
         if (event.keyCode === 13 || event.which === 13) {
           ctrlAddItem();
         }
