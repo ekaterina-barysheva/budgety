@@ -187,6 +187,10 @@ var UIController = (function() {
     dateLabel: '.budget__title--month'
   };
 
+  var insertCommas = function(numStr) {
+    if (numStr.length <= 3) return numStr;
+    else return insertCommas(numStr.substr(0, numStr.length - 3)) + "," + numStr.substr(numStr.length - 3, 3);
+}
 
   var formatNumber = function(num, type) {
     var numSplit, int, dec, type;
@@ -205,9 +209,7 @@ var UIController = (function() {
     numSplit = num.split('.');
 
     int = numSplit[0];
-    if (int.length > 3) {
-      int = int.substr(0, int.length - 3) + ',' + int.substr(int.length - 3, 3); //input 23510, output 23,510
-    }
+    int = insertCommas(int);
 
     dec = numSplit[1];
 
